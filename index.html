@@ -3,194 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft PE 1.20.81 | VagifGamerz Official</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <title>Minecraft PE 1.20.81 | VagifGamerz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --mc-green: #3c8527;
-            --mc-dirt: #3d2923;
-            --mc-stone: #7a7a7a;
-            --text-gold: #ffcc00;
-        }
+        body { background-color: #f0f2f5; color: #333; font-family: 'Montserrat', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        /* Dil Seçimi Paneli */
+        .lang-switcher { background: #fff; width: 100%; padding: 10px 0; display: flex; justify-content: center; gap: 15px; border-bottom: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .lang-btn { cursor: pointer; font-size: 13px; font-weight: bold; color: #555; padding: 5px 10px; border-radius: 5px; transition: 0.3s; }
+        .lang-btn:hover { background: #eee; color: #3c8527; }
+        .lang-btn.active { background: #3c8527; color: white; }
 
-        body {
-            background: #121212;
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            color: #ffffff;
-            font-family: 'Ubuntu', sans-serif;
-            margin: 0;
-            text-align: center;
-        }
-
-        /* Dil Paneli */
-        .header-top {
-            background: rgba(0,0,0,0.9);
-            padding: 12px;
-            border-bottom: 3px solid var(--mc-green);
-            font-size: 0.8rem;
-        }
-
-        .lang-btn {
-            color: var(--text-gold);
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            background: rgba(30, 30, 30, 0.95);
-            padding: 40px 20px;
-            border-radius: 15px;
-            border: 2px solid var(--mc-green);
-            box-shadow: 0 0 20px rgba(60, 133, 39, 0.3);
-        }
-
-        .logo-area img {
-            width: 180px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px var(--mc-green));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        h1 {
-            font-family: 'Press+Start+2P', cursive;
-            color: var(--text-gold);
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .info-text {
-            color: #aaa;
-            margin: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        /* Robot Doğrulaması */
-        .captcha-box {
-            background: #fff;
-            color: #333;
-            width: 300px;
-            margin: 30px auto;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .captcha-box input {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-        }
-
-        /* Yükləmə Düyməsi */
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(to bottom, #52a535 0%, #3c8527 100%);
-            color: white;
-            padding: 20px 50px;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-radius: 10px;
-            border-bottom: 6px solid #224d16;
-            transition: 0.1s;
-            margin-top: 20px;
-            text-shadow: 2px 2px #000;
-        }
-
-        .download-btn:active {
-            transform: translateY(4px);
-            border-bottom-width: 2px;
-        }
-
-        /* Modlar Bölməsi */
-        .mod-section {
-            margin-top: 50px;
-            background: #252525;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .mod-card {
-            border-left: 4px solid var(--text-gold);
-            background: #333;
-            margin: 10px 0;
-            padding: 15px;
-            text-align: left;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 30px;
-            background: #000;
-            font-size: 0.75rem;
-            color: #777;
-            border-top: 1px solid #333;
-        }
+        .card { background: #fff; width: 90%; max-width: 450px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; margin-top: 40px; }
+        .header-bg { background: #3c8527; padding: 30px 20px; color: white; }
+        .main-logo { width: 100px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        
+        .content { padding: 30px; }
+        .secure-tag { color: #27ae60; font-size: 13px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
+        .file-info { background: #f9f9f9; padding: 15px; border-radius: 15px; font-size: 14px; color: #666; margin-bottom: 25px; text-align: left; line-height: 1.6; }
+        
+        .download-btn { background: #3c8527; color: white; padding: 18px 0; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 15px; display: block; box-shadow: 0 8px 20px rgba(60, 133, 39, 0.3); transition: 0.3s; }
+        .download-btn:hover { transform: translateY(-3px); background: #347422; }
+        
+        footer { padding: 20px; font-size: 11px; color: #999; }
     </style>
 </head>
 <body>
 
-    <div class="header-top">
-        <span class="lang-btn">AZERBAIJAN</span> | 
-        <span class="lang-btn">ENGLISH</span> | 
-        <span class="lang-btn">TURKISH</span>
+    <div class="lang-switcher">
+        <div class="lang-btn active" onclick="changeLang('az')">AZERBAIJAN</div>
+        <div class="lang-btn" onclick="changeLang('tr')">TÜRKÇE</div>
+        <div class="lang-btn" onclick="changeLang('en')">ENGLISH</div>
     </div>
 
-    <div class="container">
-        <div class="logo-area">
-            <img src="logo.png" onerror="this.src='https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/minecraft-creeper-face.png'" alt="Minecraft Logo">
+    <div class="card">
+        <div class="header-bg">
+            <img src="logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png'" class="main-logo">
+            <div id="badge-text" style="font-size: 11px; margin-top: 10px; font-weight: bold; opacity: 0.9;">RƏSMİ PAYLAŞIM</div>
         </div>
 
-        <h1>MINECRAFT PE 1.20.81<br>YÜKLƏMƏ MƏRKƏZİ</h1>
-        
-        <p class="info-text">VagifGamerz tərəfindən rəsmi olaraq paylaşılan təhlükəsiz versiya.</p>
-
-        <div class="captcha-box">
-            <div style="display: flex; align-items: center;">
-                <input type="checkbox" id="robotCheck">
-                <label for="robotCheck" style="margin-left: 10px; font-weight: bold; font-family: sans-serif;">Mən robot deyiləm</label>
+        <div class="content">
+            <div class="secure-tag">
+                <svg width="16" height="16" fill="currentColor" style="margin-right: 6px;" viewBox="0 0 16 16"><path d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.775 11.775 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24c.304-.143.662-.352 1.048-.625a11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z"/></svg>
+                <span id="secure-text">Təhlükəsiz və Yoxlanılıb</span>
             </div>
-            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" width="35" alt="reCAPTCHA">
-        </div>
 
-        <a href="https://www.mediafire.com/file/m6v2ozq5q3wysu8/minecraft-1-20-81.apk/file" class="download-btn" id="dlBtn">İNDİ YÜKLƏ (249 MB)</a>
-
-        <div class="mod-section">
-            <h2 style="color: var(--text-gold); font-size: 1rem;">MÖVCUD MODLAR</h2>
-            <div class="mod-card">
-                <strong>🔥 Salyan Mod Pack v1</strong>
-                <p style="font-size: 0.8rem; margin: 5px 0;">Bütün skinlər açıqdır.</p>
-                <em style="color: #888;">Tezliklə gələcək...</em>
+            <h1 id="title">Minecraft Pocket Edition</h1>
+            
+            <div class="file-info" id="file-info">
+                <strong>Versiya:</strong> 1.20.81.01 <br>
+                <strong>Həcm:</strong> 249.4 MB <br>
+                <strong>Yayımçı:</strong> VagifGamerz
             </div>
+
+            <a href="https://drive.google.com/drive/folders/1Mjil8yqqdB4jr1wCc-xb3quLzrf6pFPL" class="download-btn" id="dl-btn">
+                Təhlükəsiz Yüklə
+            </a>
         </div>
+
+        <footer>
+            © 2026 VagifGamerz | Google Drive Secure Server
+        </footer>
     </div>
-
-    <footer>
-        <p>© 2026 Mojang AB. Bütün hüquqlar qorunur.</p>
-        <p>Created by <span style="color: #fff;">VagifGamerz (VagifAliyev2013)</span></p>
-    </footer>
 
     <script>
-        // Robot doğrulaması funksiyası
-        document.getElementById('dlBtn').onclick = function(e) {
-            if(!document.getElementById('robotCheck').checked) {
-                e.preventDefault();
-                alert('Zəhmət olmasa robot olmadığınızı təsdiq edin!');
+        // Dil datası
+        const data = {
+            az: {
+                badge: "RƏSMİ PAYLAŞIM",
+                secure: "Təhlükəsiz və Yoxlanılıb",
+                info: "<strong>Versiya:</strong> 1.20.81.01 <br><strong>Həcm:</strong> 249.4 MB <br><strong>Yayımçı:</strong> VagifGamerz",
+                btn: "Təhlükəsiz Yüklə"
+            },
+            tr: {
+                badge: "RESMİ PAYLAŞIM",
+                secure: "Güvenli və Taranmış",
+                info: "<strong>Sürüm:</strong> 1.20.81.01 <br><strong>Boyut:</strong> 249.4 MB <br><strong>Yayımcı:</strong> VagifGamerz",
+                btn: "Güvenle İndir"
+            },
+            en: {
+                badge: "OFFICIAL DISTRIBUTION",
+                secure: "Verified & Scanned",
+                info: "<strong>Version:</strong> 1.20.81.01 <br><strong>Size:</strong> 249.4 MB <br><strong>Publisher:</strong> VagifGamerz",
+                btn: "Secure Download"
             }
         };
-    </script>
 
+        function changeLang(lang) {
+            // Yazıları dəyiş
+            document.getElementById('badge-text').innerText = data[lang].badge;
+            document.getElementById('secure-text').innerText = data[lang].secure;
+            document.getElementById('file-info').innerHTML = data[lang].info;
+            document.getElementById('dl-btn').innerText = data[lang].btn;
+
+            // Düymə rənglərini yenilə
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(lang === 'az' ? 'azer' : lang === 'tr' ? 'türk' : 'eng')) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
