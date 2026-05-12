@@ -3,106 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft PE 1.20.81 | VagifGamerz</title>
+    <title>Minecraft PE 1.20.81 | VagifGamerz Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #f0f2f5; color: #333; font-family: 'Montserrat', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        body { background-color: #f0f2f5; color: #333; font-family: 'Montserrat', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 50px; }
         
-        /* Dil Seçimi Paneli */
-        .lang-switcher { background: #fff; width: 100%; padding: 10px 0; display: flex; justify-content: center; gap: 15px; border-bottom: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .lang-btn { cursor: pointer; font-size: 13px; font-weight: bold; color: #555; padding: 5px 10px; border-radius: 5px; transition: 0.3s; }
-        .lang-btn:hover { background: #eee; color: #3c8527; }
-        .lang-btn.active { background: #3c8527; color: white; }
+        .lang-switcher { background: #fff; width: 100%; padding: 12px 0; display: flex; justify-content: center; gap: 15px; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 100; }
+        .lang-btn { cursor: pointer; font-size: 13px; font-weight: bold; color: #555; padding: 6px 12px; border-radius: 8px; transition: 0.3s; border: 1px solid transparent; }
+        .lang-btn.active { background: #3c8527; color: white; border-color: #347422; }
 
-        .card { background: #fff; width: 90%; max-width: 450px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; margin-top: 40px; }
-        .header-bg { background: #3c8527; padding: 30px 20px; color: white; }
-        .main-logo { width: 100px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .card { background: #fff; width: 90%; max-width: 500px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; margin-top: 30px; }
+        .header-bg { background: #3c8527; padding: 35px 20px; color: white; }
+        .main-logo { width: 110px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         
         .content { padding: 30px; }
         .secure-tag { color: #27ae60; font-size: 13px; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
-        .file-info { background: #f9f9f9; padding: 15px; border-radius: 15px; font-size: 14px; color: #666; margin-bottom: 25px; text-align: left; line-height: 1.6; }
         
-        .download-btn { background: #3c8527; color: white; padding: 18px 0; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 15px; display: block; box-shadow: 0 8px 20px rgba(60, 133, 39, 0.3); transition: 0.3s; }
+        .download-btn { background: #3c8527; color: white; padding: 20px 0; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 15px; display: block; box-shadow: 0 8px 20px rgba(60, 133, 39, 0.3); transition: 0.3s; margin-bottom: 20px; }
         .download-btn:hover { transform: translateY(-3px); background: #347422; }
+
+        /* Modlar Bölməsi */
+        .mod-container { text-align: left; margin-top: 30px; padding: 0 20px; width: 90%; max-width: 500px; }
+        .mod-title { font-size: 18px; font-weight: bold; color: #444; border-left: 5px solid #3c8527; padding-left: 10px; margin-bottom: 20px; }
         
-        footer { padding: 20px; font-size: 11px; color: #999; }
+        .mod-item { background: #fff; padding: 15px; border-radius: 15px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .mod-info { display: flex; align-items: center; gap: 15px; }
+        .mod-icon { font-size: 24px; }
+        .mod-name { font-weight: bold; font-size: 14px; color: #222; }
+        .status-badge { font-size: 10px; background: #fdf2f2; color: #e02424; padding: 4px 8px; border-radius: 6px; font-weight: bold; white-space: nowrap; }
+
+        footer { margin-top: 40px; font-size: 11px; color: #999; text-align: center; }
     </style>
 </head>
 <body>
 
     <div class="lang-switcher">
-        <div class="lang-btn active" onclick="changeLang('az')">AZERBAIJAN</div>
-        <div class="lang-btn" onclick="changeLang('tr')">TÜRKÇE</div>
-        <div class="lang-btn" onclick="changeLang('en')">ENGLISH</div>
+        <div id="btn-az" class="lang-btn active" onclick="changeLang('az')">AZERBAIJAN</div>
+        <div id="btn-tr" class="lang-btn" onclick="changeLang('tr')">TÜRKÇE</div>
+        <div id="btn-en" class="lang-btn" onclick="changeLang('en')">ENGLISH</div>
     </div>
 
     <div class="card">
         <div class="header-bg">
             <img src="logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png'" class="main-logo">
-            <div id="badge-text" style="font-size: 11px; margin-top: 10px; font-weight: bold; opacity: 0.9;">RƏSMİ PAYLAŞIM</div>
+            <div id="badge-text" style="font-size: 12px; margin-top: 12px; font-weight: bold;">RƏSMİ PAYLAŞIM</div>
         </div>
 
         <div class="content">
             <div class="secure-tag">
-                <svg width="16" height="16" fill="currentColor" style="margin-right: 6px;" viewBox="0 0 16 16"><path d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.775 11.775 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24c.304-.143.662-.352 1.048-.625a11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z"/></svg>
-                <span id="secure-text">Təhlükəsiz və Yoxlanılıb</span>
+                <span id="secure-text">✅ Təhlükəsiz və Yoxlanılıb</span>
             </div>
-
-            <h1 id="title">Minecraft Pocket Edition</h1>
-            
-            <div class="file-info" id="file-info">
-                <strong>Versiya:</strong> 1.20.81.01 <br>
-                <strong>Həcm:</strong> 249.4 MB <br>
-                <strong>Yayımçı:</strong> VagifGamerz
-            </div>
-
-            <a href="https://drive.google.com/drive/folders/1Mjil8yqqdB4jr1wCc-xb3quLzrf6pFPL" class="download-btn" id="dl-btn">
-                Təhlükəsiz Yüklə
-            </a>
+            <h1 style="font-size: 20px; margin-bottom: 20px;">Minecraft PE 1.20.81</h1>
+            <a href="https://drive.google.com/drive/folders/1Mjil8yqqdB4jr1wCc-xb3quLzrf6pFPL" class="download-btn" id="dl-btn">İNDİ YÜKLƏ (249MB)</a>
         </div>
-
-        <footer>
-            © 2026 VagifGamerz | Google Drive Secure Server
-        </footer>
     </div>
 
+    <div class="mod-container">
+        <div class="mod-title" id="mod-head">Minecraft Modları</div>
+        
+        <div class="mod-item">
+            <div class="mod-info">
+                <span class="mod-icon">🛡️</span>
+                <span class="mod-name" id="mod1">God Mode (Ölümsüzlük)</span>
+            </div>
+            <span class="status-badge" id="soon1">TEZLİKLƏ</span>
+        </div>
+
+        <div class="mod-item">
+            <div class="mod-info">
+                <span class="mod-icon">👕</span>
+                <span class="mod-name" id="mod2">All Skins Unlocked (Bütün Skinlər)</span>
+            </div>
+            <span class="status-badge" id="soon2">TEZLİKLƏ</span>
+        </div>
+
+        <div class="mod-item">
+            <div class="mod-info">
+                <span class="mod-icon">⚡</span>
+                <span class="mod-name" id="mod3">Speed Hack (Sürətli Qaçış)</span>
+            </div>
+            <span class="status-badge" id="soon3">TEZLİKLƏ</span>
+        </div>
+
+        <div class="mod-item">
+            <div class="mod-info">
+                <span class="mod-icon">🏙️</span>
+                <span class="mod-name" id="mod4">Salyan City Map (Xəritə)</span>
+            </div>
+            <span class="status-badge" id="soon4">TEZLİKLƏ</span>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 VagifGamerz | Google Cloud Secure Distribution
+    </footer>
+
     <script>
-        // Dil datası
-        const data = {
+        const translations = {
             az: {
                 badge: "RƏSMİ PAYLAŞIM",
-                secure: "Təhlükəsiz və Yoxlanılıb",
-                info: "<strong>Versiya:</strong> 1.20.81.01 <br><strong>Həcm:</strong> 249.4 MB <br><strong>Yayımçı:</strong> VagifGamerz",
-                btn: "Təhlükəsiz Yüklə"
+                secure: "✅ Təhlükəsiz və Yoxlanılıb",
+                dl: "İNDİ YÜKLƏ (249MB)",
+                modHead: "Minecraft Modları",
+                m1: "God Mode (Ölümsüzlük)",
+                m2: "All Skins Unlocked (Bütün Skinlər)",
+                m3: "Speed Hack (Sürətli Qaçış)",
+                m4: "Salyan City Map (Xəritə)",
+                soon: "TEZLİKLƏ"
             },
             tr: {
                 badge: "RESMİ PAYLAŞIM",
-                secure: "Güvenli və Taranmış",
-                info: "<strong>Sürüm:</strong> 1.20.81.01 <br><strong>Boyut:</strong> 249.4 MB <br><strong>Yayımcı:</strong> VagifGamerz",
-                btn: "Güvenle İndir"
+                secure: "✅ Güvenli ve Taranmış",
+                dl: "ŞİMDİ İNDİR (249MB)",
+                modHead: "Minecraft Modları",
+                m1: "God Mode (Ölümsüzlük)",
+                m2: "Tüm Skinler Açık",
+                m3: "Hız Hilesi (Speed Hack)",
+                m4: "Salyan Şehri Haritası",
+                soon: "YAKINDA"
             },
             en: {
                 badge: "OFFICIAL DISTRIBUTION",
-                secure: "Verified & Scanned",
-                info: "<strong>Version:</strong> 1.20.81.01 <br><strong>Size:</strong> 249.4 MB <br><strong>Publisher:</strong> VagifGamerz",
-                btn: "Secure Download"
+                secure: "✅ Verified & Secure",
+                dl: "DOWNLOAD NOW (249MB)",
+                modHead: "Minecraft Mods",
+                m1: "God Mode (Invincibility)",
+                m2: "All Skins Unlocked",
+                m3: "Speed Hack Mode",
+                m4: "Salyan City Map",
+                soon: "COMING SOON"
             }
         };
 
         function changeLang(lang) {
-            // Yazıları dəyiş
-            document.getElementById('badge-text').innerText = data[lang].badge;
-            document.getElementById('secure-text').innerText = data[lang].secure;
-            document.getElementById('file-info').innerHTML = data[lang].info;
-            document.getElementById('dl-btn').innerText = data[lang].btn;
+            document.getElementById('badge-text').innerText = translations[lang].badge;
+            document.getElementById('secure-text').innerText = translations[lang].secure;
+            document.getElementById('dl-btn').innerText = translations[lang].dl;
+            document.getElementById('mod-head').innerText = translations[lang].modHead;
+            document.getElementById('mod1').innerText = translations[lang].m1;
+            document.getElementById('mod2').innerText = translations[lang].m2;
+            document.getElementById('mod3').innerText = translations[lang].m3;
+            document.getElementById('mod4').innerText = translations[lang].m4;
+            
+            // "Tezliklə" yazılarını dəyiş
+            for(let i=1; i<=4; i++) {
+                document.getElementById('soon' + i).innerText = translations[lang].soon;
+            }
 
-            // Düymə rənglərini yenilə
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase().includes(lang === 'az' ? 'azer' : lang === 'tr' ? 'türk' : 'eng')) {
-                    btn.classList.add('active');
-                }
-            });
+            // Düymə rəngini dəyiş
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
         }
     </script>
 </body>
